@@ -6,12 +6,13 @@ export const FETCH_DATA_FAILURE = 'FETCH_DATA_FAILURE'
 
 
 export const getData = () => {
+    
     return dispatch => {
         dispatch({ type: FETCH_DATA_START})
         axios
         .get('http://nflarrest.com/api/v1/crime')
         .then(res => {
-            dispatch({ type: FETCH_DATA_SUCCESS,   payload: res.data });
+            dispatch({ type: FETCH_DATA_SUCCESS, payload: res.data });
         })
         .catch(err => {
             dispatch({ type: FETCH_DATA_FAILURE, payload: err.response });

@@ -11,8 +11,8 @@ const RecordList = props => {
         <>
             <h1>NFL Arrest Records</h1>
             <button onClick={props.getData}>GET ARREST RECORDS</button>
-            {props.arrests &&
-            props.arrests.map(arrest => <Record />)}
+            {props.records &&
+            props.records.map(arrest => <Record key={arrest.Category} records={arrest}/>)}
         </>
     )
 }
@@ -21,11 +21,9 @@ const mapStateToProps = state => {
     return{
         records: state.records,
         isLoading: state.isLoading,
-       
-        
     }
 }
 
 export default connect(
-    mapStateToProps, {getData}
+    mapStateToProps, { getData }
 )(RecordList)
